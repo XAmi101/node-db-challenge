@@ -34,5 +34,41 @@ router.get('/tasks', (req, res) => {
         })
 })
 
+router.post('/', (req,res) => {
+    const change = req.body;
+
+    Data.addProject(change)
+
+        .then(project => {
+            res.status(200).json(project)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+})
+
+router.post('/resources', (req,res) => {
+    const change = req.body;
+
+    Data.addResource(change)
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+})
+
+router.post('/tasks', (req,res) => {
+    const change = req.body;
+
+    Data.addTask(change)
+        .then(projects => {
+            res.status(200).json(projects)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+})
 
 module.exports = router;
